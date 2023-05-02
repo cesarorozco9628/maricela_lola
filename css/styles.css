@@ -1,0 +1,56 @@
+.container-iframe-mgn{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.369);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.iframe-width {
+    width: 60vw;
+    height: 80vh;
+}
+
+.div-width{
+    width: 60vw;
+}
+
+.div-responsive{
+    width: 90vw;
+}
+
+.iframe-responsive {
+  width: 90vw !important;
+  height: 90vh !important;
+}
+
+
+.fw-400{
+  font-weight: 400;
+}
+
+.fw-700{
+  font-weight: 700;
+}
+
+.fs-12{
+  font-size: 12px;
+}
+
+.black-fifty{
+  color: rgba(0, 0, 0, 0.599);
+}
+
+.btn-ctz-mgn{
+  background-color: #E35D11;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 2rem;
+  border: none;
+}
