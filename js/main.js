@@ -49,7 +49,7 @@ const put_params_bulding = (data) => {
       <div class="d-flex justify-content-end pb-2 ${width_container}" id="id_container_close">
           <img src="./img/ICONO_CLOSE.svg" class="cursor-pointer" onclick="close_modal_mgn('id_fiv_frm_mgn')">
       </div>
-      <iframe class="${width_iframe}" src="https://morgana.mx/lola/registra_cotiza/${params.length>0 ? `?${params}`:''}" id="id_ifm_mgn" width=""></iframe>
+      <iframe class="${width_iframe}" src="https://uat.morgana.mx/lola/registra_cotiza/${params.length>0 ? `?${params}`:''}" id="id_ifm_mgn" width=""></iframe>
       `
       open_modal_mgn(id);
     }
