@@ -38,7 +38,7 @@ const put_params_bulding = (data) => {
 
     if (/Mobile/i.test(navigator.userAgent)) {
         let params_mob = params.length > 0 ? `?${params}` : ''
-      let lnk = `https://morgana.mx/lola/registra_cotiza/${params_mob}`;
+      let lnk = `https://uat.morgana.mx/lola/registra_cotiza/${params_mob}`;
       window.open(lnk, '_blank');
     } else {
       width_container = 'div-width'
