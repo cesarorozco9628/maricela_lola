@@ -17,6 +17,12 @@
     height: 80vh;
 }
 
+.iframe-width-page{
+  width: 80vw;
+  height: 90vh;
+  margin: auto;
+}
+
 .div-width{
     width: 60vw;
 }
