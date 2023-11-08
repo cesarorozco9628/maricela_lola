@@ -101,16 +101,20 @@ const return_params_building = data => {
 const put_params_bulding = (data) => {
     
     let div_ifrm = document.getElementById('id_fiv_frm_mgn');
+    
     div_ifrm.classList.remove('d-none');
     // El código se está ejecutando en un dispositivo de escritorio
-    div_ifrm.innerHTML = `
-    <div class="d-flex justify-content-end pb-2 " id="id_container_close">
-        <img src="./img/ICONO_CLOSE.svg" class="cursor-pointer" onclick="close_modal_mgn('id_fiv_frm_mgn')">
-    </div>
-    <iframe class="" src="${return_params_building(params_building)}" id="id_ifm_mgn" width="800" height="600"></iframe>
-    `
-    
-  
+
+    if (/Mobile/i.test(navigator.userAgent)) {
+      window.open(return_params_building(params_building), '_blank');
+    }else{
+        div_ifrm.innerHTML = `
+            <div class="d-flex justify-content-end pb-2 " id="id_container_close">
+                <img src="./img/ICONO_CLOSE.svg" class="cursor-pointer" onclick="close_modal_mgn('id_fiv_frm_mgn')">
+            </div>
+            <iframe class="" src="${return_params_building(params_building)}" id="id_ifm_mgn" width="800" height="600"></iframe>
+        `
+    }    
 }
 
 
