@@ -24,36 +24,73 @@
         <div class="my-5 d-flex justify-content-center">
             <h1 class="" style="">Página de ejemplo de implementación de iframe-morgana</h1>
         </div>
-        <div class="iframe-width-page" id="id_fiv_frm_mgn" style=" width: 80vw;height:180vh; margin: auto;">
+        <div class="iframe-width-page" id="id_fiv_frm_mgn" style=" width: 70vw;height:80vh; margin: auto;">
         </div>   
     </div>
     <script>
-        function hash_text(text){
-            const myPassword = cipher('morganamx')
-             return myPassword(text)
+        let params_building = {
+            qr_prop_value: '2000000',
+            qr_down_payment: '200000',
+            qr_term: '20',
+            qr_location: '9',
+            currency: 'MXN',
+            qr_lnk_property: 'file:///Users/paulocesarorozcoguerrero/Desktop/DOCS_LOLA/lola_ssb%202/index.html',
+            propertyType: '2',
+            auction: false,
+            /*prospect_name: 'cesar',
+            prospect_last_name: 'oroo',
+            prospect_email: 'alber_test+uat@hotmail.com',
+            prospect_phone: '8475498434',*/
+            username:'c93a7dd502af427599f6f114cbe32336',
         }
 
-        const cipher = salt => {
-            const textToChars = text => text.split('').map(c => c.charCodeAt(0));
-            const byteHex = n => ("0" + Number(n).toString(16)).substr(-2);
-            const applySaltToChar = code => textToChars(salt).reduce((a,b) => a ^ b, code);
+
+        const return_params_building = data => {
+            let {
+                username, qr_prop_value, qr_down_payment, qr_location, currency, name, qr_lnk_property, propertyType, auction, tokkoId,
+                qr_prop_tokko_id, agent_name, agent_last_name, agent_email, agent_phone, prospect_name, prospect_last_name,
+                prospect_email, prospect_phone, qr_term,
+            } = data;
+            const cipher = salt => {
+                const textToChars = text => text.split('').map(c => c.charCodeAt(0)), byteHex = n => ("0" + Number(n).toString(16)).substr(-2);
+                const applySaltToChar = code => textToChars(salt).reduce((a, b) => a ^ b, code);
+                return text => text.split('').map(textToChars).map(applySaltToChar).map(byteHex).join('');
+            }
+            function hash_text(text) { const myPassword = cipher('morganamx'); return myPassword(text) }
+            let params = `
+                ${qr_prop_value ? `&qr_prop_value=${qr_prop_value}` : ''}
+                ${qr_down_payment ? `&qr_down_payment=${qr_down_payment}` : ''}
+                ${qr_term ? `&qr_term=${qr_term}` : ''}
+                ${qr_location ? `&qr_location=${qr_location}` : ''}
+                ${currency ? `&currency=${currency}` : ''}
+                ${qr_lnk_property ? `&qr_lnk_property=${qr_lnk_property}` : ''}
+                ${propertyType ? `&propertyType=${propertyType}` : ''}
+                ${auction ? `&auction=${auction}` : ''}
+                ${tokkoId ? `&tokkoId=${tokkoId}` : ''}
+                ${qr_prop_tokko_id ? `&qr_prop_tokko_id=${qr_prop_tokko_id}` : ''}
+                ${name ? `&name=${name}` : ''}
+                ${username ? `&username=${username}` : ''}
+                ${agent_name ? `&agent_name=${agent_name}` : ''}
+                ${agent_last_name ? `&agent_last_name=${agent_last_name}` : ''}
+                ${agent_email ? `&agent_email=${agent_email}` : ''}
+                ${agent_phone ? `&agent_phone=${agent_phone}` : ''}
+                ${prospect_name ? `&prospect_name=${prospect_name}` : ''}
+                ${prospect_last_name ? `&prospect_last_name=${prospect_last_name}` : ''}
+                ${prospect_email ? `&prospect_email=${prospect_email}` : ''}
+                ${prospect_phone ? `&prospect_phone=${prospect_phone}` : ''}
+            `;
+            params = hash_text(params);
         
-            return text => text.split('')
-              .map(textToChars)
-              .map(applySaltToChar)
-              .map(byteHex)
-              .join('');
+            return `https://uat.morgana.mx/lola/registra_cotiza/${params.length > 0 ? `?${params}` : ''}`
         }
 
         window.onload = function() {
-            let { username ,id, price, ubication, email, name, phone } = {username:'f8dc4e1aa83f49d99ff3f531c670e251', id:'id_fiv_frm_mgn'};
-             let div_ifrm = document.getElementById(id);
-             let params = `${username?`username=${username}`:''}${price?`&price=${price}`:''}${ubication?`&ubication=${ubication}`:''}${email?`&email=${email}`:''}${name?`&name=${name}`:''}${phone?`&phone=${phone}`:''}`;
-             params = hash_text(params);
+             let div_ifrm = document.getElementById('id_fiv_frm_mgn');
+            
                // El código se está ejecutando en un dispositivo de escritorio
-         
+            
                div_ifrm.innerHTML = `
-                 <iframe class="" src="https://uat.morgana.mx/lola/registra_cotiza/${params.length>0 ? `?${params}`:''}" id="id_ifm_mgn" width="100%" height="100%"></iframe>
+                 <iframe class="" src="${return_params_building(params_building)}" id="id_ifm_mgn" width="100%" height="100%"></iframe>
                `         
          };
     </script>
