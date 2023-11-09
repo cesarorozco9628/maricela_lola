@@ -92,7 +92,7 @@ const return_params_building = data => {
     `;
     params = hash_text(params);
 
-    return `http://morgana.localhost:8003/lola/registra_cotiza/${params.length > 0 ? `?${params}` : ''}`
+    return `https://uat.morgana.mx/lola/registra_cotiza/${params.length > 0 ? `?${params}` : ''}`
 }
 
 
