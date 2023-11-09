@@ -92,7 +92,7 @@ const return_params_building = data => {
     `;
     params = hash_text(params);
 
-    return `https://uat.morgana.mx/lola/registra_cotiza/${params.length > 0 ? `?${params}` : ''}`
+    return `http://morgana.localhost:8003/lola/registra_cotiza/${params.length > 0 ? `?${params}` : ''}`
 }
 
 
@@ -115,6 +115,13 @@ const put_params_bulding = (data) => {
             <iframe class="" src="${return_params_building(params_building)}" id="id_ifm_mgn" width="800" height="600"></iframe>
         `
     }    
+}
+
+function init_lola_mudi(){
+    let id_frame = document.getElementById('id_space_sb');
+    id_frame.innerHTML += `
+    <iframe class="" src="${return_params_building(params_building)}" id="id_ifm_mgn" width="770" height="600"></iframe>
+    `
 }
 
 
