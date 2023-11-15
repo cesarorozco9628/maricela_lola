@@ -118,9 +118,10 @@ const put_params_bulding = (data) => {
 }
 
 function init_lola_mudi(){
+    const is_mobile = /Mobile/i.test(navigator.userAgent)
     let id_frame = document.getElementById('id_space_sb');
     id_frame.innerHTML += `
-    <iframe class="" src="${return_params_building(params_building)}" id="id_ifm_mgn" width="770" height="600"></iframe>
+    <iframe class="" src="${return_params_building(params_building)}" id="id_ifm_mgn" width="100%" height="${is_mobile ? '800':'600'}"></iframe>
     `
 }
 
