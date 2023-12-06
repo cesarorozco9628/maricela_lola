@@ -42,7 +42,7 @@ let params_building = {
     prospect_last_name: 'oroo',
     prospect_email: 'alber_test+uat@hotmail.com',
     prospect_phone: '8475498434',*/
-    username:'c93a7dd502af427599f6f114cbe32336',
+    username:'2253727aa9e1473d82cb0be582efa896',
 }
 // DATOS QUE SE PIDE A TOKKO PARA PODER HACER LA VINCULACION DEL PROSPECTO CON EL CLIENTE 
     //agent_name: 'cesar',       
@@ -92,7 +92,7 @@ const return_params_building = data => {
     `;
     params = hash_text(params);
 
-    return `https://uat.morgana.mx/lola/registra_cotiza/${params.length > 0 ? `?${params}` : ''}`
+    return `http://morgana.localhost:8003/lola/registra_cotiza/${params.length > 0 ? `?${params}` : ''}`
 }
 
 
